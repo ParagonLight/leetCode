@@ -1,0 +1,18 @@
+The problem:
+Given an array of integers, every element appears three times except for one. Find that single one.
+
+The solusion:
+This problem is not like the No.136, which is named Single Number. We cannot use XOR to filter out our target number, due to all elements appear in odd times. Therefore, we should find another way to deal with this problem.
+
+The key to solve this problem is that n-1 elements appear exactly the same times (it is 3 in this problem.). When we see these elements in binary, they are in the same length (16 bits, or 32 bits). The only difference is the value (0/1) of each bit. So, if we count the number of 1s appearing in each bit from this array, we could find that some numbers could be divided by 3 (i mod3 = 0), and the rest are (i mod3 = 1). Then, we only need to generate an integer that the bits are assigned to 1 only and only if their numbers of 1s appearance are i mode3 = 1. 
+
+
+Key lines of code:
+    threes = twos & v; //when an integer v comes, +1 for all bits that are already in twos and appear in v
+    twos = (ones & v | twos) & (~threes);//+1 for all bits that are already in ones, combine with bits in twos, then, discard bits that would be threes in this turn.
+    ones = (v | ones) & (~threes);//combine v and ones, then discard bits that would be threes in this turn.
+
+See code.c
+
+
+
