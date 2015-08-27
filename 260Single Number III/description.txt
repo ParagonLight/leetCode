@@ -1,0 +1,16 @@
+The problem:
+Given an array of numbers nums, in which exactly two elements appear only once and all the other elements appear exactly twice. Find the two elements that appear only once.
+
+For example:
+
+Given nums = [1, 2, 1, 3, 2, 5], return [3, 5].
+
+Your algorithm should run in linear runtime complexity. Could you implement it using only constant space complexity?
+
+The solution:
+The key to this problem is to find a way that could separate the two elements. If we XOR the two different integers, we could get a non-zero binary number. For each digit, if it is assigned to 1, the digits in these two integers are different. 
+
+To solve this problem, 
+1.we first XOR all integers in the array. After that, we get the XOR result of the two distinct integers. 
+2.Then, we pick up one digit that is assigned to 1, to generate a number. For example, if the result is 00000101, we could generate 00000001 or 0000100.
+3. We use this number if split integers in the array with AND operation. You can imagine that after the process, the two distinct integers are splited into two groups. For each group, only one integer appears exactly once and all other integers appear exactly twice.
