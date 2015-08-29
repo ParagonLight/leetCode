@@ -1,0 +1,25 @@
+The problem:
+Given an unsorted integer array, find the first missing positive integer.
+
+For example,
+Given [1,2,0] return 3,
+and [3,4,-1,1] return 2.
+
+Your algorithm should run in O(n) time and uses constant space.
+
+The solution:
+Due to the restriction of time complexity, we cannot use some kinds of sorting algorithm to sort this array entirely. However, if we do not sort this array, we cannot find the first missing positive integer.
+
+The solution is to partially sort this array when we run the first loop in this array. Just put the current positive integer x into the position (x-1). After the loop, every positive integer is in their corresponding position. 
+            
+while(x > 0 && x != nums[x - 1] && x <= numsSize){          
+    nums[i] = nums[x - 1];                                  
+    nums[x - 1] = x;
+    x = nums[i];
+}
+
+We just swap the positive integer nums[i] and nums[nums[i] - 1] repeatedly until nums[i] is not positive or equal to nums[nums[i] - 1] 
+
+
+
+
