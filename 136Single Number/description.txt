@@ -1,5 +1,0 @@
-The problem:
-Given an array of integers, every element appears twice except for one. Find that single one.
-
-The solution:
-The problem is simple, Just do the XOR operation for all integers in the given array.
